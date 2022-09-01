@@ -1,4 +1,4 @@
-# vite + react + ts + tailwind + antd
+# vite + react + ts + tailwind + antd starter
 
 ## tailwindcss
 
