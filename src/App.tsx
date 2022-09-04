@@ -1,13 +1,39 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AppRouter from './router'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { decrement, increment } from '@/store/couter'
 import { useAppDispatch, useAppSelector } from './hooks'
+import { getUserList, userRegister, userLogin } from '@/request/user'
 function App() {
   const [count, setCount] = useState(0)
   const counts = useAppSelector(state => state.counter.value)
   const dispatch = useAppDispatch()
+
+  const register = async () => {
+    const res = await userRegister()
+    console.log(res)
+  }
+
+  const login = async () => {
+    // const { token } = await userLogin()
+    const res = await userLogin()
+    localStorage.setItem('token', (res as any).token)
+  }
+
+  const fetchUserList = async () => {
+    const res = await getUserList()
+    console.log(res)
+  }
+
+  useEffect(() => {
+    // const getInfo = async () => {
+    //   console.log('get')
+    //   const res = await getUserList()
+    //   console.log(res)
+    // }
+    // getInfo()
+  })
   return (
     <div className="grid place-content-center h-screen text-center text-lg">
       <div className="flex mx-auto items-center gap-8">
@@ -40,6 +66,13 @@ function App() {
         </button>
         <hr />
         <h1>--- {counts} --</h1>
+      </div>
+      <div>
+        <button onClick={register}>注册</button>
+        <button onClick={login}>登录</button>
+      </div>
+      <div>
+        <button onClick={fetchUserList}>获取</button>
       </div>
       <AppRouter />
     </div>

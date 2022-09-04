@@ -348,3 +348,10 @@ const dispatch = useAppDispatch()
 ```
 
 ## stylelint..
+
+## 备忘
+
+1. axios 封装 OR fetch 封装
+2. 引入 echarts OR antv/g2
+3. loadsh
+4. 打包优化: vite.config.js // https://cn.vitejs.dev/guide/build.html
